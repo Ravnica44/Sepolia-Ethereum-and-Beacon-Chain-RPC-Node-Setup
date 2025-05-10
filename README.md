@@ -45,11 +45,11 @@
     --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
     http://localhost:8545
 
-13. Allow Rpc Port 
-   sudo ufw allow 8545/tcp
-   sudo ufw allow 8551/tcp
+13. Allow Rpc Port:
+   sudo ufw allow 8545/tcp,
+   sudo ufw allow 8551/tcp,
    sudo ufw allow 5052/tcp
-14. Then enable (if not already)
+14. Then enable (if not already):
    sudo ufw enable
 15. Check status:
     sudo ufw status
