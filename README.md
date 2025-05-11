@@ -40,9 +40,11 @@
     `sudo journalctl -u lighthouse-sepolia.service -f`
 
 ## Test if Geth RPC is working:
-    `curl -X POST -H "Content-Type: application/json" \
+    ```shell
+    curl -X POST -H "Content-Type: application/json" \
     --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
-    http://localhost:8546`
+    http://localhost:8546
+    ```
 
 ## Allow Rpc Port:
    `sudo ufw allow 8546/tcp`
