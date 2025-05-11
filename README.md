@@ -53,5 +53,5 @@ Then enable (if not already):
 Check status:
     `sudo ufw status`
 
-Test if Beacon chain is syncing:
+## Test if Beacon chain is syncing:
     `curl http://localhost:5052/eth/v1/node/syncing`
