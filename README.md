@@ -13,12 +13,12 @@
 ## Modify the lighthouse service file
    `nano lighthouse-sepolia.service` Save with: Ctrl+X → Y → Enter
 
-## Create JWT secret:
+## Create JWT secret
    `cd data`
    `openssl rand -hex 32 > /root/sepolia-node/data/jwtsecret`
    `cd ..`
 
-## Enable systemd services:
+## Enable systemd services
    `sudo systemctl daemon-reexec`
    
    `sudo systemctl daemon-reload`
@@ -27,24 +27,22 @@
    
    `sudo systemctl enable lighthouse-sepolia.service`
 
-## Start geth first:
+## Start geth first
    `sudo systemctl start geth-sepolia.service`
 
-## Start lighthouse next:
+## Start lighthouse next
    `sudo systemctl start lighthouse-sepolia.service`
 
-## Check geth logs:
+## Check geth logs
     `sudo journalctl -u geth-sepolia.service -f`
 
-## Check lighthouse logs:
+## Check lighthouse logs
     `sudo journalctl -u lighthouse-sepolia.service -f`
 
-## Test if Geth RPC is working:
-    ```shell
+## Test if Geth RPC is working
     curl -X POST -H "Content-Type: application/json" \
     --data '{"jsonrpc":"2.0","method":"eth_blockNumber","params":[],"id":1}' \
     http://localhost:8546
-    ```
 
 ## Allow Rpc Port:
    `sudo ufw allow 8546/tcp`
@@ -55,11 +53,11 @@
    
    `sudo ufw allow 5052/tcp`
    
-Then enable (if not already):
+Then enable (if not already)
    `sudo ufw enable`
    
-Check status:
+Check status
     `sudo ufw status`
 
-## Test if Beacon chain is syncing:
-    `curl http://localhost:5052/eth/v1/node/syncing`
+## Test if Beacon chain is syncing
+    curl http://localhost:5052/eth/v1/node/syncing
