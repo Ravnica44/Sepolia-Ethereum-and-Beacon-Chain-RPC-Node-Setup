@@ -1,10 +1,8 @@
-1. Make the script executable `chmod +x setup-sepolia-node.sh`
+## Make the script executable `chmod +x setup-sepolia-node.sh`
 
-2. Run the script: `./setup-sepolia-node.sh`
+Run the script: `./setup-sepolia-node.sh`
 
-5. Go to the node folder:
-6. 
-   `cd sepolia-node`
+Go to the node folder: `cd sepolia-node`
 
 7. Modify the geth service file: `nano geth-sepolia.service` Save with: Ctrl+X → Y → Enter
 
