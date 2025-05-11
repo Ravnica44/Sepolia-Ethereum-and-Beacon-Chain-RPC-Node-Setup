@@ -62,4 +62,4 @@ Check status
     `sudo ufw status`
 
 ## Test if Beacon chain is syncing
-    curl http://localhost:5052/eth/v1/node/syncing
+    curl -s http://localhost:5052/eth/v1/node/syncing | jq
