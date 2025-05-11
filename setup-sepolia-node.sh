@@ -68,7 +68,7 @@ Wants=network.target
 [Service]
 User=$USER
 Type=simple
-ExecStart=/usr/bin/geth --sepolia --http --http.api eth,net,engine,admin --http.addr 0.0.0.0 --http.port 8545 --http.corsdomain "*" --ws --ws.addr 0.0.0.0 --ws.port 8546 --ws.api eth,net,engine --ws.origins "*" --datadir ~/sepolia-node/data/geth --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret ~/sepolia-node/data/jwtsecret
+ExecStart=/usr/bin/geth --sepolia --http --http.api eth,net,engine,admin --http.addr 0.0.0.0 --http.port 8546 --http.corsdomain "*" --ws --ws.addr 0.0.0.0 --ws.port 8547 --ws.api eth,net,engine --ws.origins "*" --datadir ~/sepolia-node/data/geth --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret ~/sepolia-node/data/jwtsecret
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -86,7 +86,7 @@ Wants=network.target geth-sepolia.service
 [Service]
 User=$USER
 Type=simple
-ExecStart=$HOME/.cargo/bin/lighthouse bn --network sepolia --datadir ~/sepolia-node/data/lighthouse --execution-endpoint http://localhost:8551 --execution-jwt ~/sepolia-node/data/jwtsecret --checkpoint-sync-url https://checkpoint-sync.sepolia.ethpandaops.io --http --http.address 0.0.0.0 --http.port 5052 --metrics --metrics-address 0.0.0.0 --metrics-port 5054
+ExecStart=/root/.cargo/bin/lighthouse bn --network sepolia --datadir ~/sepolia-node/data/lighthouse --execution-endpoint http://localhost:8551 --execution-jwt /root/sepolia-node/data/jwtsecret --checkpoint-sync-url https://checkpoint-sync.sepolia.ethpandaops.io --http --http-address 0.0.0.0 --http-port 5052 --metrics --metrics-address 0.0.0.0 --metrics-port 5054
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -114,8 +114,8 @@ sleep 30
 sudo systemctl start lighthouse-sepolia
 echo "Sepolia node services started!"
 echo "RPC Endpoints:"
-echo "- Execution (ETH) HTTP RPC: http://localhost:8545"
-echo "- Execution (ETH) WebSocket: ws://localhost:8546"
+echo "- Execution (ETH) HTTP RPC: http://localhost:8546"
+echo "- Execution (ETH) WebSocket: ws://localhost:8547"
 echo "- Consensus (Beacon) HTTP: http://localhost:5052"
 echo "Monitor logs:"
 echo "- Execution: sudo journalctl -fu geth-sepolia"
@@ -146,8 +146,8 @@ echo "To stop your Sepolia node:"
 echo "  ~/sepolia-node/stop-sepolia-node.sh"
 echo ""
 echo "RPC Endpoints once started:"
-echo "- Execution (ETH) HTTP RPC: http://localhost:8545"
-echo "- Execution (ETH) WebSocket: ws://localhost:8546"
+echo "- Execution (ETH) HTTP RPC: http://localhost:8546"
+echo "- Execution (ETH) WebSocket: ws://localhost:8547"
 echo "- Consensus (Beacon) HTTP: http://localhost:5052"
 echo ""
 echo "Initial synchronization may take several hours to complete."
