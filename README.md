@@ -34,10 +34,10 @@
    `sudo systemctl start lighthouse-sepolia.service`
 
 ## Check geth logs
-    `sudo journalctl -u geth-sepolia.service -f`
+   `sudo journalctl -u geth-sepolia.service -f`
 
 ## Check lighthouse logs
-    `sudo journalctl -u lighthouse-sepolia.service -f`
+   `sudo journalctl -u lighthouse-sepolia.service -f`
 
 ## Test if Geth RPC is working
     curl -X POST -H "Content-Type: application/json" \
