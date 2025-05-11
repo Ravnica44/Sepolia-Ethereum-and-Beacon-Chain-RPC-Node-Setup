@@ -20,8 +20,11 @@
 
 ## Enable systemd services:
    `sudo systemctl daemon-reexec`
+   
    `sudo systemctl daemon-reload`
+   
    `sudo systemctl enable geth-sepolia.service`
+   
    `sudo systemctl enable lighthouse-sepolia.service`
 
 ## Start geth first:
@@ -42,9 +45,12 @@
     http://localhost:8546`
 
 ## Allow Rpc Port:
-   `sudo ufw allow 8546/tcp`,
-   `sudo ufw allow 8547/tcp`,
-   `sudo ufw allow 8551/tcp`,
+   `sudo ufw allow 8546/tcp`
+   
+   `sudo ufw allow 8547/tcp`
+   
+   `sudo ufw allow 8551/tcp`
+   
    `sudo ufw allow 5052/tcp`
    
 Then enable (if not already):
