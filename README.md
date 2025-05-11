@@ -15,7 +15,9 @@
 
 ## Create JWT secret
    `cd data`
+   
    `openssl rand -hex 32 > /root/sepolia-node/data/jwtsecret`
+   
    `cd ..`
 
 ## Enable systemd services
