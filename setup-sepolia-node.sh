@@ -66,9 +66,27 @@ After=network.target
 Wants=network.target
 
 [Service]
-User=$USER
+User=root
 Type=simple
-ExecStart=/usr/bin/geth --sepolia --http --http.api eth,net,engine,admin --http.addr 0.0.0.0 --http.port 8546 --http.corsdomain "*" --ws --ws.addr 0.0.0.0 --ws.port 8547 --ws.api eth,net,engine --ws.origins "*" --datadir ~/sepolia-node/data/geth --authrpc.addr 0.0.0.0 --authrpc.port 8551 --authrpc.vhosts "*" --authrpc.jwtsecret ~/sepolia-node/data/jwtsecret
+ExecStart=/usr/bin/geth \
+  --sepolia \
+  --authrpc.addr 0.0.0.0 \
+  --authrpc.port 8551 \
+  --authrpc.vhosts=* \
+  --authrpc.jwtsecret /root/sepolia-node/data/jwtsecret \
+  --http \
+  --http.addr 0.0.0.0 \
+  --http.port 8546 \
+  --http.api eth,net,engine,admin,web3 \
+  --http.corsdomain "*" \
+  --ws \
+  --ws.addr 0.0.0.0 \
+  --ws.port 8547 \
+  --ws.api eth,net,engine,admin,web3 \
+  --syncmode "full" \
+  --gcmode=full \
+  --datadir /root/sepolia-node/data/geth \
+  --verbosity 3
 Restart=on-failure
 LimitNOFILE=65535
 
@@ -84,9 +102,20 @@ After=network.target geth-sepolia.service
 Wants=network.target geth-sepolia.service
 
 [Service]
-User=$USER
+User=root
 Type=simple
-ExecStart=/root/.cargo/bin/lighthouse bn --network sepolia --datadir ~/sepolia-node/data/lighthouse --execution-endpoint http://localhost:8551 --execution-jwt /root/sepolia-node/data/jwtsecret --checkpoint-sync-url https://checkpoint-sync.sepolia.ethpandaops.io --http --http-address 0.0.0.0 --http-port 5052 --metrics --metrics-address 0.0.0.0 --metrics-port 5054
+ExecStart=/root/.cargo/bin/lighthouse bn \
+  --network sepolia \
+  --datadir /root/sepolia-node/data/lighthouse \
+  --execution-endpoint http://localhost:8551 \
+  --execution-jwt /root/sepolia-node/data/jwtsecret \
+  --checkpoint-sync-url https://checkpoint-sync.sepolia.ethpandaops.io \
+  --http \
+  --http-address 0.0.0.0 \
+  --http-port 5052 \
+  --metrics \
+  --metrics-address 0.0.0.0 \
+  --metrics-port 5054
 Restart=on-failure
 LimitNOFILE=65535
 
