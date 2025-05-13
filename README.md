@@ -1,8 +1,8 @@
 ## Make the script executable
-`chmod +x setup-sepolia-node.sh`
+`chmod +x check_sync.sh`
 
 ## Run the script
-`./setup-sepolia-node.sh`
+`./check_sync.sh`
 
 ## Go to the node folder
 `cd sepolia-node`
